@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<script type="text/javascript">
+	function computerPlay(){
+		var state = "";
+		var num = Math.floor(Math.random()*10);
+		if (num <= 2){
+			var state = "Rock";
+		};
+		if (num <= 5 && num > 2){
+			var state = "Paper";
+		};
+		if (num <= 8 && num > 5){
+			var state = "Scissors";
+		};
+		if (num == 9){
+			return computerPlay();
+		};
+		return state;
+	};
+
+	function play(){
+		ui = prompt("What do you choose?");
+		ui = ui.toLowerCase();
+		comp = computerPlay().toLowerCase();
+		if (comp == ui){
+			return "It's a tie!";
+		};
+		if (comp == "rock" && ui == "scissors"){
+			return "Computer Wins!";
+		};
+		if (comp == "scissors" && ui == "paper"){
+			return "Computer Wins!";
+		};
+		if (comp == "paper" && ui == "rock"){
+			return "Computer Wins!";
+		};
+		if (ui == "rock" && comp == "scissors"){
+			return "You win!";
+		};
+		if (ui == "scissors" && comp == "paper"){
+			return "You win!";
+		};
+		if (ui == "paper" && comp == "rock"){
+			return "You win!";
+		} else {
+			return "Invalid Input";
+		};
+	};
+
+	function game(){
+		var userscore = 0;
+		var compscore = 0;
+		console.log("Initial Score: " + userscore + " - " + compscore);
+		while ((userscore < 5) && (compscore < 5)){
+			s = play();
+			if (s == "You win!"){
+				console.log("You won the round!");
+				userscore ++;
+			};
+			if (s == "Computer Wins!"){
+				console.log("You lost the round");
+				compscore ++;
+			};
+			if (s == "It's a tie!"){
+				console.log("You tied this round")
+			};
+			console.log("Current Score: " + userscore + " - " + compscore);
+		};
+		if (userscore == 5){
+				return "User wins game!";
+			};
+		if (compscore == 5){
+				return "Computer wins game!";
+			};
+	};
+
+	console.log(game())
+</script>
+
+
+
+
+
+</html>
